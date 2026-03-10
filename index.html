@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gîte à Paray-le-Monial – Saône-et-Loire</title>
+  <meta name="description" content="Authentique fermette de pays restaurée à Paray-le-Monial, Bourgogne. 5 personnes, 2 chambres, 76 m². Gîtes de France Saône-et-Loire." />
+  <style>
+    :root {
+      --beige: #f5f0e8;
+      --beige-dark: #e8dfc8;
+      --brown: #6b4f3a;
+      --brown-light: #9c7a5e;
+      --green: #5a7a52;
+      --green-light: #7a9e72;
+      --text: #2e2a24;
+      --text-muted: #6b6057;
+      --white: #ffffff;
+      --shadow: 0 4px 20px rgba(0,0,0,0.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      color: var(--text);
+      background: var(--beige);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--beige-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2rem;
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--brown);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,20,10,0.72) 0%, rgba(30,20,10,0.15) 50%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--white);
+      padding: 3rem 2rem 4rem;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .hero-subtitle {
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 2rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: normal;
+      color: var(--brown);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    /* DESCRIPTION */
+    .description {
+      background: var(--white);
+    }
+
+    .description-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .description-text p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .description-image img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: var(--shadow);
+    }
+
+    /* QUICK INFO */
+    .quick-info {
+      background: var(--green);
+      padding: 2.5rem 2rem;
+    }
+
+    .quick-info-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .info-item {
+      text-align: center;
+      color: white;
+    }
+
+    .info-item .value {
+      font-size: 2rem;
+      font-weight: bold;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .info-item .label {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* GALLERY */
+    .gallery {
+      background: var(--beige-dark);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 4px;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item.wide {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-caption {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* CHAMBRES */
+    .chambres {
+      background: var(--white);
+    }
+
+    .chambres-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .chambre-card {
+      border: 1px solid var(--beige-dark);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .chambre-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .chambre-body {
+      padding: 1.5rem;
+    }
+
+    .chambre-body h3 {
+      font-size: 1.2rem;
+      color: var(--brown);
+      margin-bottom: 0.25rem;
+    }
+
+    .chambre-floor {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .chambre-body ul {
+      list-style: none;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .chambre-body ul li::before {
+      content: '—';
+      margin-right: 0.5rem;
+      color: var(--brown-light);
+    }
+
+    /* EQUIPEMENTS */
+    .equipements {
+      background: var(--beige);
+    }
+
+    .equip-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .equip-group h3 {
+      font-size: 1rem;
+      color: var(--brown);
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--beige-dark);
+    }
+
+    .equip-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .equip-list li {
+      font-family: Arial, sans-serif;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .equip-list li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* SERVICES */
+    .services {
+      background: var(--brown);
+      color: white;
+    }
+
+    .services h2 { color: white; }
+    .services .section-label { color: rgba(255,255,255,0.6); }
+
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .service-tag {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2rem;
+      font-family: Arial, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .service-note {
+      margin-top: 1.5rem;
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      font-style: italic;
+    }
+
+    /* LOISIRS */
+    .loisirs {
+      background: var(--white);
+    }
+
+    .loisirs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .loisir-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 1rem;
+      background: var(--beige);
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .loisir-item .distance {
+      color: var(--green);
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--beige-dark);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info p {
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-info strong {
+      color: var(--brown);
+    }
+
+    .contact-info a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    .contact-info a:hover { text-decoration: underline; }
+
+    .gdf-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .gdf-logo img {
+      width: 140px;
+      margin-bottom: 1rem;
+    }
+
+    .gdf-logo p {
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--green);
+      color: white;
+      border-radius: 3px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: var(--brown); }
+
+    /* FOOTER */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2rem;
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+    }
+
+    /* DIVIDER */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--green-light);
+      margin-bottom: 1.5rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0.75rem 1rem; }
+      .nav-links { display: none; }
+
+      .description-grid,
+      .chambres-grid,
+      .equip-cols,
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item.wide { grid-column: span 2; }
+
+      .loisirs-grid { grid-template-columns: 1fr 1fr; }
+
+      section { padding: 3rem 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid,
+      .loisirs-grid { grid-template-columns: 1fr; }
+      .gallery-item.wide { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Gîte · Paray-le-Monial</div>
+    <ul class="nav-links">
+      <li><a href="#description">Le gîte</a></li>
+      <li><a href="#gallery">Photos</a></li>
+      <li><a href="#equipements">Équipements</a></li>
+      <li><a href="#loisirs">Loisirs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="images/exterieur.jpg" alt="Extérieur du gîte – terrasse et jardin" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Gîtes de France · Saône-et-Loire</p>
+      <h1 class="hero-title">Une authentique fermette<br>en Bourgogne</h1>
+      <p class="hero-subtitle">Paray-le-Monial, cité du Sacré-Cœur · Canal du Centre</p>
+      <div class="hero-badges">
+        <span class="badge">5 personnes</span>
+        <span class="badge">2 chambres</span>
+        <span class="badge">76 m²</span>
+        <span class="badge">Animaux bienvenus</span>
+        <span class="badge">Wi-Fi fibre</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK INFO BAR -->
+  <div class="quick-info">
+    <div class="quick-info-grid">
+      <div class="info-item">
+        <span class="value">5</span>
+        <span class="label">Personnes</span>
+      </div>
+      <div class="info-item">
+        <span class="value">2</span>
+        <span class="label">Chambres</span>
+      </div>
+      <div class="info-item">
+        <span class="value">76</span>
+        <span class="label">m²</span>
+      </div>
+      <div class="info-item">
+        <span class="value">3 km</span>
+        <span class="label">Gare</span>
+      </div>
+      <div class="info-item">
+        <span class="value">2 km</span>
+        <span class="label">Commerces</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <section class="description" id="description">
+    <div class="container description-grid">
+      <div class="description-text">
+        <p class="section-label">Le gîte</p>
+        <h2>Un écrin de verdure<br>au cœur du pays parodien</h2>
+        <div class="divider"></div>
+        <p>
+          Danielle &amp; Serge — passionné de bandes dessinées et propriétaire d'une exceptionnelle collection de 15 000 ouvrages, consultable en sa compagnie — vous accueillent dans une <strong>authentique fermette de pays du début du XX<sup>e</sup> siècle</strong>, intégralement restaurée, blottie au calme au sein d'un paisible hameau résidentiel.
+        </p>
+        <p>
+          Proche du centre de la charmante cité du Sacré-Cœur lovée sur les rives du célèbre <strong>Canal du Centre</strong>, haut lieu de l'art roman en « Pays d'Art et d'Histoire » : basilique du Sacré-Cœur (fin XI<sup>e</sup>, chef-d'œuvre clunisien), Musée eucharistique du Hiéron (plus ancien musée d'art sacré de France)…
+        </p>
+        <p>
+          Apaisant écrin de verdure, niché en pleine campagne préservée sur un bucolique plateau vallonné de champs et prairies, au creux de la douce vallée de la <strong>Bourbince</strong> (protégée en ZNIEFF) et du célèbre bocage charolais parsemé d'étangs. À deux pas du Bois des Aisances et ses sentiers de sous-bois.
+        </p>
+        <p>
+          Gîte de très bon confort. Belle pièce de vie d'esprit « cathédrale ». Chaleureux cachet contemporain. Ambiance zen &amp; douce. Vaste chambre sous les toits en mode « cocon ». Intimiste cour végétalisée avec jardinet engazonné &amp; terrasse ombragée sous canisse (couverte d'une glycine).
+        </p>
+      </div>
+      <div class="description-image">
+        <img src="images/salle2.jpg" alt="Séjour du gîte – vue cathédrale avec cuisine ouverte" />
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <p class="section-label">Photos</p>
+      <h2>Découvrez le gîte</h2>
+      <div class="divider"></div>
+      <div class="gallery-grid">
+        <div class="gallery-item wide">
+          <img src="images/salle.jpg" alt="Pièce de vie – séjour et escalier" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/chambre1.jpg" alt="Chambre 1 – rez-de-chaussée" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/chambre-etage.jpg" alt="Chambre 2 – étage, style cocon" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/salle-de-bain.jpg" alt="Salle d'eau" />
+        </div>
+        <div class="gallery-item wide">
+          <img src="images/exterieur.jpg" alt="Extérieur – terrasse, jardin et barbecue" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAMBRES -->
+  <section class="chambres" id="chambres">
+    <div class="container">
+      <p class="section-label">La maison</p>
+      <h2>Les chambres</h2>
+      <div class="divider"></div>
+      <p style="color:var(--text-muted); font-family:Arial,sans-serif; font-size:0.9rem; margin-bottom:0.5rem;">
+        3 lits simples &nbsp;•&nbsp; 1 lit double &nbsp;•&nbsp; 1 douche &nbsp;•&nbsp; 1 WC indépendant
+      </p>
+      <div class="chambres-grid">
+        <div class="chambre-card">
+          <img src="images/chambre1.jpg" alt="Chambre 1" />
+          <div class="chambre-body">
+            <h3>Chambre 1</h3>
+            <p class="chambre-floor">Rez-de-chaussée</p>
+            <ul>
+              <li>1 lit double (140 × 190 cm)</li>
+              <li>1 lit simple (90 × 190 cm)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="chambre-card">
+          <img src="images/chambre-etage.jpg" alt="Chambre 2" />
+          <div class="chambre-body">
+            <h3>Chambre 2</h3>
+            <p class="chambre-floor">1<sup>er</sup> étage — sous les toits</p>
+            <ul>
+              <li>2 lits simples (120 × 190 cm)</li>
+              <li>Ambiance cocon &amp; lumineuse</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPEMENTS -->
+  <section class="equipements" id="equipements">
+    <div class="container">
+      <p class="section-label">Confort &amp; équipements</p>
+      <h2>Tout le confort du foyer</h2>
+      <div class="divider"></div>
+      <div class="equip-cols">
+        <div class="equip-group">
+          <h3>Équipements intérieurs</h3>
+          <ul class="equip-list">
+            <li>Lave-linge</li>
+            <li>Lave-vaisselle</li>
+            <li>Four micro-ondes</li>
+            <li>Congélateur</li>
+            <li>Télévision</li>
+            <li>Internet (fibre)</li>
+            <li>Chauffage central gaz</li>
+          </ul>
+        </div>
+        <div class="equip-group">
+          <h3>Équipements extérieurs</h3>
+          <ul class="equip-list">
+            <li>Terrasse ombragée</li>
+            <li>Jardin privatif</li>
+            <li>Cour végétalisée</li>
+            <li>Barbecue</li>
+            <li>Salon de jardin</li>
+            <li>Parking privé</li>
+            <li>Local vélos fermé</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="container">
+      <p class="section-label">Inclus dans le séjour</p>
+      <h2>Services &amp; options</h2>
+      <div class="services-grid">
+        <span class="service-tag">Draps inclus</span>
+        <span class="service-tag">Linge de toilette inclus</span>
+        <span class="service-tag">Charges incluses</span>
+        <span class="service-tag">Chauffage inclus</span>
+        <span class="service-tag">Animaux acceptés (gratuit)</span>
+        <span class="service-tag">Wi-Fi fibre</span>
+      </div>
+      <p class="service-note">Option ménage fin de séjour : 50 € (forfait pour tout le séjour)</p>
+    </div>
+  </section>
+
+  <!-- LOISIRS -->
+  <section class="loisirs" id="loisirs">
+    <div class="container">
+      <p class="section-label">Aux alentours</p>
+      <h2>Loisirs à proximité</h2>
+      <div class="divider"></div>
+      <div class="loisirs-grid">
+        <div class="loisir-item"><span>Commerces</span><span class="distance">2 km</span></div>
+        <div class="loisir-item"><span>Sentiers de randonnée</span><span class="distance">2 km</span></div>
+        <div class="loisir-item"><span>Voie verte / bleue</span><span class="distance">3 km</span></div>
+        <div class="loisir-item"><span>Pêche</span><span class="distance">3 km</span></div>
+        <div class="loisir-item"><span>Piscine</span><span class="distance">3 km</span></div>
+        <div class="loisir-item"><span>Tennis</span><span class="distance">3 km</span></div>
+        <div class="loisir-item"><span>Location de vélos</span><span class="distance">3 km</span></div>
+        <div class="loisir-item"><span>Gare SNCF</span><span class="distance">3 km</span></div>
+        <div class="loisir-item"><span>Forêt</span><span class="distance">4 km</span></div>
+        <div class="loisir-item"><span>Équitation</span><span class="distance">14,5 km</span></div>
+        <div class="loisir-item"><span>Baignade</span><span class="distance">37 km</span></div>
+        <div class="loisir-item"><span>Vignoble</span><span class="distance">52 km</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <p class="section-label">Réservation &amp; contact</p>
+        <h2>Nous contacter</h2>
+        <div class="divider"></div>
+        <p><strong>Adresse</strong><br>6 La Forêt<br>71600 Paray-le-Monial, France</p>
+        <p><strong>Téléphone</strong><br><a href="tel:+33385888066">+33 3 85 88 80 66</a></p>
+        <p style="margin-top:1rem; font-size:0.85rem;">
+          Danielle &amp; Serge sont disponibles pour répondre à vos questions et organiser votre séjour.
+        </p>
+        <a href="tel:+33385888066" class="btn">Appeler pour réserver</a>
+        <a href="https://www.gites71.com/location-Gite-Paray-le-monial-Saone-et-loire-71G883.html" class="btn" target="_blank" rel="noopener" style="margin-left:0.75rem; background:var(--brown);">Voir les tarifs</a>
+      </div>
+      <div class="gdf-logo">
+        <img src="images/logo-gdf.jpg" alt="Gîtes de France – Saône-et-Loire" />
+        <p>Gîte labellisé<br><strong>Gîtes de France – Saône-et-Loire</strong></p>
+        <iframe
+          style="width:100%; height:240px; border:0; border-radius:6px; margin-top:1.5rem; box-shadow:var(--shadow);"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=6+La+Forêt,+71600+Paray-le-Monial&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Gîte à Paray-le-Monial · 6 La Forêt, 71600 Paray-le-Monial · <a href="tel:+33385888066" style="color:rgba(255,255,255,0.5);">+33 3 85 88 80 66</a></p>
+  </footer>
+
+</body>
+</html>
