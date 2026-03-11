@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://giteparaylemonial.fr/sitemap.xml
